@@ -1,4 +1,4 @@
-﻿namespace Day1{
+﻿namespace Template{
     class Program
     {
         static void Main()
