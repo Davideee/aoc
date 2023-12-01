@@ -1,6 +1,9 @@
-﻿namespace Template{
+﻿using System.Runtime.CompilerServices;
+using Day01Davide;
+
+namespace Template{
     class Program
-    {
+{
         static void Main()
         {
             // Aktueller Ausführpfad erhalten
@@ -21,12 +24,9 @@
                 Console.WriteLine("Fehler beim Lesen der Datei: " + e.Message);
             }
 
-
-            Console.WriteLine($"Folgende Daten eingelesen:");
-            foreach (var line in lines)
-            {
-                Console.WriteLine(line.ToString());
-            }
+            CalibrationReader calibrationReader = new CalibrationReader(lines);
+            Console.WriteLine($"Summe aller Zahlen ist {calibrationReader.GetSum}");  
         }
+
     }
 }

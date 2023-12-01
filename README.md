@@ -27,7 +27,27 @@ Und noch den Datenordner mit Textfile erstellen:
 `mkdir DayXX/data`
 `"Hello, World!" | Out-File -FilePath "DayXX/data/data.txt"`
 
-**Program.cs** von Template Projekt kopieren und los :)
+Um den gesamten Inhalt des `data`-Ordners und seiner Unterverzeichnisse in das Ausgabeverzeichnis (Output Directory) beim Build zu kopieren, füge folgenden Zeilen in die `DayXX.csproj`-Datei ein:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <!-- Fügen Sie die folgenden Zeilen ein -->
+  <ItemGroup>
+    <None Update="data\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
+.```
+
+Noch **Program.cs** von Template Projekt kopieren und los :)
 
 ## Build / Run
 
