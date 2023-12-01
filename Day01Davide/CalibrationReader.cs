@@ -60,16 +60,7 @@ namespace Day01Davide {
             } else {
                 // Alle string bis zur ersten Zahl speichern
                 string text = new String(line.Reverse().TakeWhile(Char.IsLetter).ToArray());
-                int indexBest = int.MaxValue;
-                foreach(var spelledNumber in NumbersDictionary){
-                    string searchStringReversed = new string(spelledNumber.Key.ToCharArray().Reverse().ToArray());
-                    var index = text.IndexOf(searchStringReversed, StringComparison.OrdinalIgnoreCase);
-                    // Wenn das Wort gefunden wird kommt ein Wert >= 0. Wenn position dann noch null ist oder kleiner als das aktuellste -> überschreiben
-                    if (index >= 0 && (index < indexBest)){
-                        number = spelledNumber.Value;
-                        indexBest = index;
-                    }
-                }
+                number = FindValue(text, true);
             }
 
             if (!number.HasValue){
@@ -87,15 +78,7 @@ namespace Day01Davide {
             } else {
                 // Alle string bis zur ersten Zahl speichern
                 string text = new String(line.TakeWhile(Char.IsLetter).ToArray());
-                int indexBest = int.MaxValue;
-                foreach(var spelledNumber in NumbersDictionary){
-                    var index = text.IndexOf(spelledNumber.Key, StringComparison.OrdinalIgnoreCase);
-                    // Wenn das Wort gefunden wird kommt ein Wert >= 0. Wenn position dann noch null ist oder kleiner als das aktuellste -> überschreiben
-                    if (index >= 0 && (index < indexBest)){
-                        number = spelledNumber.Value;
-                        indexBest = index;
-                    }
-                }
+                number = FindValue(text, false);
             }
 
             if (!number.HasValue){
@@ -104,6 +87,21 @@ namespace Day01Davide {
             }
 
             return (int)number;
+        }
+
+        private static int? FindValue(string text, bool reversed = false){
+            int? number = default;
+            int indexBest = int.MaxValue;
+            foreach(var spelledNumber in NumbersDictionary){
+                string searchText = reversed ? new string(spelledNumber.Key.ToCharArray().Reverse().ToArray()) : spelledNumber.Key;
+                var index = text.IndexOf(searchText, StringComparison.OrdinalIgnoreCase);
+                // Wenn das Wort gefunden wird kommt ein Wert >= 0. Wenn position dann noch null ist oder kleiner als das aktuellste -> überschreiben
+                if (index >= 0 && (index < indexBest)){
+                    number = spelledNumber.Value;
+                    indexBest = index;
+                }
+            }
+            return number;
         }
 
         public long GetSum => Numbers.Sum();

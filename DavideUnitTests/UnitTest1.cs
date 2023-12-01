@@ -29,7 +29,10 @@ public class Tests
         Assert.That(num, Is.EqualTo(1));
 
         num = CalibrationReader.FindLastNumber("74nsvkm5nztmctpmngppzkphltpx");
-        Assert.That(num, Is.EqualTo(5));    
+        Assert.That(num, Is.EqualTo(5));  
+
+        num = CalibrationReader.FindLastNumber("1122534");
+        Assert.That(num, Is.EqualTo(4));     
     }
 
     [Test]
@@ -52,5 +55,8 @@ public class Tests
 
         num = CalibrationReader.FindFirstNumber("74nsvkm5nztmctpmngppzkphltpx");
         Assert.That(num, Is.EqualTo(7));    
+
+        num = CalibrationReader.FindFirstNumber("54165498");
+        Assert.That(num, Is.EqualTo(5));    
     }
 }
