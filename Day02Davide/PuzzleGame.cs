@@ -1,3 +1,4 @@
+
 namespace Day02Davide
 {
     public class PuzzleGame
@@ -9,23 +10,38 @@ namespace Day02Davide
 
         public int Id;
 
+        private string Line;
+
+        private string LineSamples;
+
+
         public PuzzleGame(string line)
         {
-            ExtractGameId(line);
+            Line = line;
+            ExtractGameId();
+            ExtractPuzzleSamples();
         }
 
-        private void ExtractGameId(string line)
+        private void ExtractPuzzleSamples()
         {
-            // Die Position von "Game" finden
-            int gameIndex = line.IndexOf(GAME) + GAME.Length;
+            List<string> samples = LineSamples.Split(";").ToList();
+            foreach (var sample in samples)
+            {
+                PuzzleSample puzzleSample = new(sample);
+                puzzleSamples.Add(puzzleSample);
+            }
 
-            // Die Position von ":" finden, beginnend ab "Game"
-            int colonIndex = line.IndexOf(":");
+        }
+
+        private void ExtractGameId()
+        {
+            // Die Position von ":" finden
+            int colonIndex = Line.IndexOf(":");
 
             // Den Substring zwischen "Game" und ":" extrahieren
-            string gameIdString = line.Substring(gameIndex, colonIndex).Trim();
-
+            string gameIdString = Line.Substring(GAME.Length, colonIndex - GAME.Length).Trim();
             Id = int.Parse(gameIdString);
+            LineSamples = Line.Substring(colonIndex + 1);
         }
     }
 }
