@@ -17,6 +17,7 @@
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <ProjectReference Include="..\Day01Davide\Day01Davide.csproj" />
     <ProjectReference Include="..\Day02Davide\Day02Davide.csproj" />
+    <ProjectReference Include="..\Day03Davide\Day03Davide.csproj" />
   </ItemGroup>
 
 </Project>
