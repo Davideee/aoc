@@ -2,7 +2,7 @@ using Day01Davide;
 
 namespace DavideUnitTests;
 
-public class Tests
+public class Day01Davide
 {
 
     [Test]
@@ -24,19 +24,19 @@ public class Tests
         Assert.That(num, Is.EqualTo(1));
 
         num = CalibrationReader.FindFirstOrLastNumber("74nsvkm5nztmctpmngppzkphltpx", true);
-        Assert.That(num, Is.EqualTo(5));  
+        Assert.That(num, Is.EqualTo(5));
 
         num = CalibrationReader.FindFirstOrLastNumber("1122534", true);
         Assert.That(num, Is.EqualTo(4));
 
         num = CalibrationReader.FindFirstOrLastNumber("sadaskdj4dsfpkjsdiofj5", true);
-        Assert.That(num, Is.EqualTo(5)); 
+        Assert.That(num, Is.EqualTo(5));
 
         num = CalibrationReader.FindFirstOrLastNumber("sadaskdj4dsfpkjsdiofjsadasd", true);
-        Assert.That(num, Is.EqualTo(4));    
+        Assert.That(num, Is.EqualTo(4));
 
         num = CalibrationReader.FindFirstOrLastNumber("26", true);
-        Assert.That(num, Is.EqualTo(6));      
+        Assert.That(num, Is.EqualTo(6));
     }
 
     [Test]
@@ -58,22 +58,22 @@ public class Tests
         Assert.That(num, Is.EqualTo(3));
 
         num = CalibrationReader.FindFirstOrLastNumber("74nsvkm5nztmctpmngppzkphltpx");
-        Assert.That(num, Is.EqualTo(7));    
+        Assert.That(num, Is.EqualTo(7));
 
         num = CalibrationReader.FindFirstOrLastNumber("54165498");
-        Assert.That(num, Is.EqualTo(5));  
+        Assert.That(num, Is.EqualTo(5));
 
         num = CalibrationReader.FindFirstOrLastNumber("sadaskdj4dsfpkjsdiofj5");
-        Assert.That(num, Is.EqualTo(4)); 
+        Assert.That(num, Is.EqualTo(4));
 
         num = CalibrationReader.FindFirstOrLastNumber("sadaskdj4dsfpkjsdiofjsadasd");
         Assert.That(num, Is.EqualTo(4));
-        
+
         num = CalibrationReader.FindFirstOrLastNumber("26");
-        Assert.That(num, Is.EqualTo(2));    
+        Assert.That(num, Is.EqualTo(2));
 
         num = CalibrationReader.FindFirstOrLastNumber("74nsvkm5nztmctpmngppzkphltpx");
-        Assert.That(num, Is.EqualTo(7));      
+        Assert.That(num, Is.EqualTo(7));
     }
 
     [Test]
@@ -86,8 +86,8 @@ public class Tests
             "lrfjxppqbdseven94ntnskpkdqeightsix5xskh" //75
             ];
 
-        CalibrationReader calibrationReader = new (stringList);
-        Assert.That(calibrationReader.GetSum, Is.EqualTo(75+75+81+75));
+        CalibrationReader calibrationReader = new(stringList);
+        Assert.That(calibrationReader.GetSum, Is.EqualTo(75 + 75 + 81 + 75));
     }
 
     [Test]
@@ -103,7 +103,7 @@ public class Tests
             "7pqrstsixteen",
             ];
 
-        CalibrationReader calibrationReader = new (stringList);
+        CalibrationReader calibrationReader = new(stringList);
         Assert.That(calibrationReader.GetSum, Is.EqualTo(281));
     }
 }

@@ -16,6 +16,7 @@
     <PackageReference Include="NUnit.Analyzers" Version="3.6.1" />
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <ProjectReference Include="..\Day01Davide\Day01Davide.csproj" />
+    <ProjectReference Include="..\Day02Davide\Day02Davide.csproj" />
   </ItemGroup>
 
 </Project>

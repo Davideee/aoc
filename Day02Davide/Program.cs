@@ -1,4 +1,4 @@
-﻿namespace Day01Davide
+﻿namespace Day02Davide
 {
     class Program
     {
@@ -22,8 +22,7 @@
                 Console.WriteLine("Fehler beim Lesen der Datei: " + e.Message);
             }
 
-            CalibrationReader calibrationReader = new CalibrationReader(lines);
-            Console.WriteLine($"Summe aller Zahlen ist {calibrationReader.GetSum}");
+            PuzzleGame puzzleGame = new PuzzleGame("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green");
         }
 
     }
