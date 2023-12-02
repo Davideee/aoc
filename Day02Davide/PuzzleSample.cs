@@ -14,12 +14,30 @@ namespace Day02Davide
             string colour = string.Empty;
             foreach (var colourCount in colourCounts)
             {
-                number = new String(colourCount.TakeWhile(char.IsDigit).ToArray());
-                colour = new string(colourCount.Where(char.IsLetter).ToArray());
-                Console.WriteLine(number);
-                Console.WriteLine(colour);
-            }
-
+                number = new string(colourCount.Trim().TakeWhile(char.IsDigit).ToArray());
+                colour = new string(colourCount.Trim().Where(char.IsLetter).ToArray());
+                if (Enum.TryParse(colour, true, out ColourEnum parsedColour) 
+                    && int.TryParse(number, out int parsedNumber))
+                {
+                    switch (parsedColour){
+                        case ColourEnum.Red:
+                            Red = parsedNumber;
+                            break;
+                        case ColourEnum.Blue:
+                            Blue = parsedNumber;
+                            break;
+                        case ColourEnum.Green:
+                            Green = parsedNumber;
+                            break;
+                        default:
+                            throw new ArgumentException("Fehler: Ungültige Colour von File gelesen");
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException($"Fehler: Konnte übergebene Farbe oder Nummer nicht parsen. Farbe:={colour}, Number:={number}");
+                }
+            }    
         }
 
         public int Red { get; set; }

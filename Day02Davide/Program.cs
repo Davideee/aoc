@@ -4,9 +4,6 @@
     {
         static void Main()
         {
-            // Aktueller Ausführpfad erhalten
-            string currentDirectory = Directory.GetCurrentDirectory();
-
             // Pfad zur Datei, die Sie einlesen möchten
             string filePath = "./data/data.txt";
             string[] lines = Array.Empty<string>();
@@ -21,8 +18,26 @@
                 // Fehlerbehandlung für den Fall, dass die Datei nicht gelesen werden kann
                 Console.WriteLine("Fehler beim Lesen der Datei: " + e.Message);
             }
+            long counter = 0;
+            List<PuzzleGame> puzzleGames = new();
 
-            PuzzleGame puzzleGame = new PuzzleGame("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green");
+            foreach (var line in lines)
+            {
+               PuzzleGame puzzleGame = new PuzzleGame(line); 
+               puzzleGames.Add(puzzleGame);
+               if (puzzleGame.ValidateGame(red: 12, green: 13, blue: 14)){
+                    counter += puzzleGame.Id;
+               }
+            }
+            Console.WriteLine($"Summe aller Möglichen Ids ist {counter}");
+
+            // Part two
+            long powerCounter = 0;
+            foreach (var game in puzzleGames)
+            {
+               powerCounter += game.PowerOfFewestNumberOfCubes;
+            }
+            Console.WriteLine($"Summe der Produkte der minimaler Anzahl Würfel ist {powerCounter}");
         }
 
     }
