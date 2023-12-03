@@ -18,8 +18,9 @@
                 // Fehlerbehandlung für den Fall, dass die Datei nicht gelesen werden kann
                 Console.WriteLine("Fehler beim Lesen der Datei: " + e.Message);
             }
+            EngineSchematicsReader engineSchematicsReader = new(lines);
+            Console.WriteLine(engineSchematicsReader.SumValidSchemaNumbers);
             
-            Console.WriteLine($"... {2}");
         }
 
     }
