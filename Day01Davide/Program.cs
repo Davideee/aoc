@@ -1,28 +1,13 @@
-﻿namespace Day01Davide
+﻿using AocShared;
+
+namespace Day01Davide
 {
     class Program
     {
-        static void Main()
-        {
-            // Aktueller Ausführpfad erhalten
-            string currentDirectory = Directory.GetCurrentDirectory();
+        static void Main() {
+            FileReader fileReader = new();
 
-            // Pfad zur Datei, die Sie einlesen möchten
-            string filePath = "./data/data.txt";
-            string[] lines = Array.Empty<string>();
-
-            try
-            {
-                // Alle Zeilen aus der Datei lesen und in einem Array speichern
-                lines = File.ReadAllLines(filePath);
-            }
-            catch (IOException e)
-            {
-                // Fehlerbehandlung für den Fall, dass die Datei nicht gelesen werden kann
-                Console.WriteLine("Fehler beim Lesen der Datei: " + e.Message);
-            }
-
-            CalibrationReader calibrationReader = new CalibrationReader(lines);
+            CalibrationReader calibrationReader = new CalibrationReader(fileReader.Lines);
             Console.WriteLine($"Summe aller Zahlen ist {calibrationReader.GetSum}");
         }
 

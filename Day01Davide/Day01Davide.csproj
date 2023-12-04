@@ -11,4 +11,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AocShared\AocShared.csproj" />
+  </ItemGroup>
 </Project>

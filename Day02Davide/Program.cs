@@ -1,29 +1,19 @@
-﻿namespace Day02Davide
+﻿using AocShared;
+
+namespace Day02Davide
 {
     class Program
     {
         static void Main()
         {
-            // Pfad zur Datei, die Sie einlesen möchten
-            string filePath = "./data/data.txt";
-            string[] lines = Array.Empty<string>();
+            FileReader fileReader = new();
 
-            try
-            {
-                // Alle Zeilen aus der Datei lesen und in einem Array speichern
-                lines = File.ReadAllLines(filePath);
-            }
-            catch (IOException e)
-            {
-                // Fehlerbehandlung für den Fall, dass die Datei nicht gelesen werden kann
-                Console.WriteLine("Fehler beim Lesen der Datei: " + e.Message);
-            }
             long counter = 0;
             List<PuzzleGame> puzzleGames = new();
 
-            foreach (var line in lines)
+            foreach (string line in fileReader.Lines)
             {
-               PuzzleGame puzzleGame = new PuzzleGame(line); 
+               PuzzleGame puzzleGame = new (line);
                puzzleGames.Add(puzzleGame);
                if (puzzleGame.ValidateGame(red: 12, green: 13, blue: 14)){
                     counter += puzzleGame.Id;
