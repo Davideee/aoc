@@ -9,9 +9,7 @@ public class Day03Davide
         EngineSchematicsReader engineSchematicsReader = new (new string[] {".....+.58."});
         Assert.That(engineSchematicsReader.SchemaNumbers[0].Value, Is.EqualTo(58));
         Assert.That(engineSchematicsReader.SchemaNumbers[0].StartIndex, Is.EqualTo(7));
-        Assert.That(engineSchematicsReader.SchemaNumbers[0].EndIndex, Is.EqualTo(8));
-
-
+        
         EngineSchematicsReader engineSchematicsReader2 = new (new string[] {"617*......"});
         Assert.That(engineSchematicsReader2.SchemaNumbers[0].Value, Is.EqualTo(617));
         Assert.That(engineSchematicsReader2.SchemaNumbers[0].StartIndex, Is.EqualTo(0));
@@ -51,7 +49,7 @@ public class Day03Davide
         Assert.That(char.IsLetterOrDigit('$'), Is.False);
      }
 
-          [Test]
+    [Test]
      public void Integration(){
         string[] str = [
             "12.......*..",

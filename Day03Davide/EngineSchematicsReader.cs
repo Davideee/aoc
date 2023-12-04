@@ -1,18 +1,25 @@
 namespace Day03Davide{
+    /// <summary>
+    /// Diese Klasse ist sehr grusig
+    /// </summary>
     public class EngineSchematicsReader{
-        private char[,] EngineSchema;
+        private char[,] EngineSchema = new char[0,0];
 
         public List<SchemaNumber> SchemaNumbers = [];
+        public List<Gear> Gears = [];
 
         private int Width;
         private int Height;
 
         public long SumValidSchemaNumbers = 0;
+        public long SumGears = 0;
 
         public EngineSchematicsReader(string[] lines){
             CreateEngineSchema(lines);
             IdentifyNumbersInSchema();
             IdentifyValidNumbers();
+            IdentifyGears();
+            SumUpGears();
         }
 
         private void CreateEngineSchema(string[] lines){
@@ -45,7 +52,8 @@ namespace Day03Davide{
                         startIndex = !startIndex.HasValue ? column : startIndex;
                     }
                     if ((!char.IsDigit(c) || column == Width) && !string.IsNullOrEmpty(number)){
-                        SchemaNumbers.Add(new (int.Parse(number), row, (int)startIndex, column - 1));
+
+                        SchemaNumbers.Add(new (int.Parse(number), row, startIndex.HasValue ? (int)startIndex : 0, column == Width ? column : column - 1));
                         number = string.Empty;
                         startIndex = null;
                     }
@@ -56,7 +64,6 @@ namespace Day03Davide{
         private void IdentifyValidNumbers(){
             foreach (var schemaNumber in SchemaNumbers)
             {
-                Console.WriteLine(schemaNumber.ToString());
                 SumValidSchemaNumbers += IsValid(schemaNumber) ? schemaNumber.Value : 0;
             }
         }
@@ -77,6 +84,54 @@ namespace Day03Davide{
                 }
             }
             return false;
+        }
+
+        private void IdentifyGears(){
+            for (int row = 0; row < Height + 1; row++)
+            {
+                for (int column = 0; column < Width + 1; column++)
+                {
+                    char c = EngineSchema[row, column];
+                    
+                    if (c == '*'){
+                        Gears.Add(new Gear(row, column, Height, Width));
+                    }
+                
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sehr grusig
+        /// </summary>
+        /// <returns></returns>
+        public void SumUpGears(){
+            foreach (var gear in Gears)
+            {
+                List<long> numbers = new();
+                foreach (var schemaNumber in SchemaNumbers)
+                {
+                    foreach (var field in schemaNumber.Fields)
+                    {
+                        if (gear.Fields.Where(g => field == g).Any()){
+                            numbers.Add(schemaNumber.Value);
+                            break;
+                        }
+                    }
+                }
+
+                long sum = 0;
+                if (numbers.Count > 1){
+                    for (int i = 0; i < numbers.Count - 1; i++)
+                    {
+                        for (int j = i + 1; j < numbers.Count; j++)
+                        {
+                            sum += numbers[i] * numbers[j];
+                        }
+                    }                
+                }
+                SumGears += sum;
+            }
         }
 
     }

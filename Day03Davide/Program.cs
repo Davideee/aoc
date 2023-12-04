@@ -1,26 +1,16 @@
-﻿namespace Day03Davide
+﻿using AocShared;
+
+namespace Day03Davide
 {
     class Program
     {
         static void Main()
         {
-            // Pfad zur Datei, die Sie einlesen möchten
-            string filePath = "./data/data.txt";
-            string[] lines = Array.Empty<string>();
+            var fileReader = new FileReader();
+            EngineSchematicsReader engineSchematicsReader = new(fileReader.Lines);
+            Console.WriteLine($"Part1 Sum:{engineSchematicsReader.SumValidSchemaNumbers}"); 
+            Console.WriteLine($"Part2 Sum:{engineSchematicsReader.SumGears}"); 
 
-            try
-            {
-                // Alle Zeilen aus der Datei lesen und in einem Array speichern
-                lines = File.ReadAllLines(filePath);
-            }
-            catch (IOException e)
-            {
-                // Fehlerbehandlung für den Fall, dass die Datei nicht gelesen werden kann
-                Console.WriteLine("Fehler beim Lesen der Datei: " + e.Message);
-            }
-            EngineSchematicsReader engineSchematicsReader = new(lines);
-            Console.WriteLine(engineSchematicsReader.SumValidSchemaNumbers);
-            
         }
 
     }
