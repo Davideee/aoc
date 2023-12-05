@@ -37,41 +37,51 @@ namespace Day05Davide {
             Console.WriteLine($"Min location Part1: {locations.Min()}");
 
             // Part 2
-            List<Range> ranges = new();
+            List<MapRange> ranges = new();
             for (int i = 0; i < seeds.Count; i++) {
                 var min = seeds[i];
                 i++;
                 var max = min + seeds[i];
-                ranges.Add(new Range(min, max - 1));
+                ranges.Add(new MapRange(min, max - 1));
             }
 
-            for (int i = 0; i < ranges.Count; i++)
-            {
-                for (int j = i + 1; j < ranges.Count; j++) {
-
-                    Console.WriteLine(ranges[i].OverlappingInput(ranges[j]));
-                    Console.WriteLine(ranges[i].NumberInsideRange(ranges[j].Max));
-                    Console.WriteLine(ranges[i].NumberInsideRange(ranges[j].Min));
-
-                    Console.WriteLine(ranges[j].OverlappingInput(ranges[i]));
-                    Console.WriteLine(ranges[j].NumberInsideRange(ranges[i].Max));
-                    Console.WriteLine(ranges[j].NumberInsideRange(ranges[i].Min));
-                    Console.WriteLine();
-                }
-            }
-            // my ranges aren't overlapping so no performance gain
+            // TestOverlappingRanges(ranges);
 
             long locationPart2 = long.MaxValue;
 
-            foreach (Range range in ranges) {
-                Parallel.For(range.Min, range.Max + 1, seed =>
+            foreach (MapRange range in ranges)
+            {
+                Parallel.For(0, range.Max + 1, seed => 
                 {
-                    long? location = gardenMappers.Aggregate<GardenMapper?, long?>(default, (current, gardenMapper) => gardenMapper.MapSource(current ?? seed));
+                    long? location = default;
+                    foreach (var gardenMapper in gardenMappers)
+                    {
+                        location = gardenMapper.MapSource(location ?? seed);
+                    }
                     Interlocked.Exchange(ref locationPart2, Math.Min(location ?? long.MaxValue, locationPart2));
                 });
-                Console.WriteLine($"Range {range.Min} to {range.Max} finished.");
             }
-            Console.WriteLine("Final New Location Part2: " + locationPart2);
+            Console.WriteLine("Final New Location: " + locationPart2);
+        }
+
+        private static void TestOverlappingRanges(List<MapRange> ranges){
+            for (int i = 0; i < ranges.Count; i++)
+                {
+                    for (int j = i + 1; j < ranges.Count; j++) {
+
+                        Console.WriteLine(ranges[i].OverlappingInput(ranges[j]));
+                        Console.WriteLine(ranges[i].NumberInsideRange(ranges[j].Max));
+                        Console.WriteLine(ranges[i].NumberInsideRange(ranges[j].Min));
+
+                        Console.WriteLine(ranges[j].OverlappingInput(ranges[i]));
+                        Console.WriteLine(ranges[j].NumberInsideRange(ranges[i].Max));
+                        Console.WriteLine(ranges[j].NumberInsideRange(ranges[i].Min));
+                        Console.WriteLine();
+                    }
+                }
+                // my ranges aren't overlapping so no performance gain
         }
     }
+
+
 }

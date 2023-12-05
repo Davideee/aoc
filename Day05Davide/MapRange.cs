@@ -1,14 +1,14 @@
 ﻿namespace Day05Davide; 
 
-class Range {
+public class MapRange {
     public long Min;
     public long Max;
-    public Range(long min, long max) {
+    public MapRange(long min, long max) {
         Min = min;
         Max = max;
     }
 
-    public bool OverlappingInput(Range range)
+    public bool OverlappingInput(MapRange range)
     {
         return Min <= range.Min && range.Max <= Max;
     }
