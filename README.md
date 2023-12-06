@@ -1,4 +1,4 @@
-# AOC 2023
+# AOC
 
 Es geht los :)
 
