@@ -1,8 +1,8 @@
-using Day05Davide;
+using Day05;
 
-namespace DavideUnitTests;
+namespace UnitTests;
 
-public class Day05Davide
+public class Day05Test
 {
     [Test]
     public void TestNumberInRange() {
@@ -15,8 +15,8 @@ public class Day05Davide
 
     [Test]
     public void TestOverlappingRange() {
-      MapRange r1 = new MapRange(0,10);
-      MapRange r2 = new MapRange(2,10);
+      MapRange r1 = new(0,10);
+      MapRange r2 = new(2,10);
       Assert.That(r1.OverlappingInput(r2), Is.True);
       Assert.That(r2.OverlappingInput(r1), Is.False);
     }

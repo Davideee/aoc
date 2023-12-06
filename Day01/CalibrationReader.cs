@@ -1,6 +1,6 @@
 using System.Runtime.ExceptionServices;
 
-namespace Day01Davide {
+namespace Day01 {
     public class CalibrationReader{
 
         private static Dictionary<string, int> NumbersDictionary => new()

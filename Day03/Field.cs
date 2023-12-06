@@ -1,4 +1,4 @@
-namespace Day03Davide {
+namespace Day03 {
     public class Field {
         private readonly int _x;
         private readonly int _y;
@@ -8,7 +8,6 @@ namespace Day03Davide {
             _y = y;
         }
 
-#pragma warning disable CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
         public override bool Equals(object obj) {
             if (obj is Field otherField) {
                 // Überprüfen, ob X und Y gleich sind
@@ -16,7 +15,6 @@ namespace Day03Davide {
             }
             return false;
         }
-#pragma warning restore CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
 
         public override int GetHashCode() {
             // Ein einfacher Hash-Code, der auf den Werten von X und Y basiert

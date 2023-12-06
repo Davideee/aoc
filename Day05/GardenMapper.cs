@@ -1,4 +1,6 @@
-﻿namespace Day05Davide;
+﻿using Day05;
+
+namespace Day05in;
 
 public class GardenMapper {
     private readonly List<MappingInfo> _mappingInfos;
@@ -20,5 +22,17 @@ public class GardenMapper {
             }
         }
         return mapped ?? source;
+    }
+
+    // TODO Not correct
+    public long MapLocation(long location) {
+        long? mapped = default;
+
+        foreach (var mappingInfo in _mappingInfos) {
+            if (mappingInfo.DestinationRangeStart <= location && location <= mappingInfo.DestinationRangeEnd) {
+                mapped = (location - mappingInfo.DestinationRangeStart + mappingInfo.DestinationRangeStart);
+            }
+        }
+        return mapped ?? location;
     }
 }

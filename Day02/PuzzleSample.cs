@@ -1,4 +1,4 @@
-namespace Day02Davide
+namespace Day02
 {
     public class PuzzleSample
     {

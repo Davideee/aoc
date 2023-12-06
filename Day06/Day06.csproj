@@ -6,12 +6,5 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\AocShared\AocShared.csproj" />
-    </ItemGroup>
-    <ItemGroup>
-      <None Update="data\data.txt">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
+
 </Project>

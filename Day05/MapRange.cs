@@ -1,4 +1,4 @@
-﻿namespace Day05Davide; 
+﻿namespace Day05;
 
 public class MapRange {
     public long Min;

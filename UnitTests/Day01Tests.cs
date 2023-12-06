@@ -1,8 +1,8 @@
-using Day01Davide;
+using Day01;
 
-namespace DavideUnitTests;
+namespace UnitTests;
 
-public class Day01Davide
+public class Day01Test
 {
 
     [Test]
@@ -79,12 +79,12 @@ public class Day01Davide
     [Test]
     public void TestIntegrationGetSum()
     {
-        string[] stringList = [
+        string[] stringList = {
             "74nsvkm5nztmctpmngppzkphltpx", //75
             "74nsvkm5nztmctpmngppzkphltpx", //75
             "pnjmlpbbeightskgdf6one", //81
             "lrfjxppqbdseven94ntnskpkdqeightsix5xskh" //75
-            ];
+            };
 
         CalibrationReader calibrationReader = new(stringList);
         Assert.That(calibrationReader.GetSum, Is.EqualTo(75 + 75 + 81 + 75));
@@ -93,7 +93,7 @@ public class Day01Davide
     [Test]
     public void TestIntegrationGetSumSampleData()
     {
-        string[] stringList = [
+        string[] stringList = {
             "two1nine",
             "eightwothree",
             "abcone2threexyz",
@@ -101,7 +101,7 @@ public class Day01Davide
             "4nineeightseven2",
             "zoneight234",
             "7pqrstsixteen",
-            ];
+             };
 
         CalibrationReader calibrationReader = new(stringList);
         Assert.That(calibrationReader.GetSum, Is.EqualTo(281));

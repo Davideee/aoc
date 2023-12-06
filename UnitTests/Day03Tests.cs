@@ -1,8 +1,8 @@
-using Day03Davide;
+using Day03;
 
-namespace DavideUnitTests;
+namespace UnitTests;
 
-public class Day03Davide
+public class Day03Test
 {
     [Test]
     public void ReadNumbers() {
@@ -51,7 +51,7 @@ public class Day03Davide
 
     [Test]
      public void Integration(){
-        string[] str = [
+        string[] str = {
             "12.......*..",
             "+.........34",
             ".......-12..",
@@ -64,7 +64,7 @@ public class Day03Davide
             "2.2......12.",
             ".*.........*",
             "1.1.......56"
-            ];
+            };
         EngineSchematicsReader engineSchematicsReader = new (str);
         Assert.That(engineSchematicsReader.SumValidSchemaNumbers, Is.EqualTo(413));
      }

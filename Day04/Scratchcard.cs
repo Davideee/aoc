@@ -1,4 +1,4 @@
-﻿namespace Day04Davide; 
+﻿namespace Day04; 
 
 public class Scratchcard {
     private readonly string _line;

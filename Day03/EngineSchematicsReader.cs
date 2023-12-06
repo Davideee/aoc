@@ -1,4 +1,4 @@
-namespace Day03Davide{
+namespace Day03{
     /// <summary>
     /// Diese Klasse ist sehr grusig
     /// </summary>

@@ -1,4 +1,4 @@
-namespace Day02Davide
+namespace Day02
 {
     public enum ColourEnum{
         Unknown = 0,

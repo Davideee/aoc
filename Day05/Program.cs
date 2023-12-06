@@ -1,6 +1,8 @@
 ﻿using AocShared;
+using Day05;
+using Day05in;
 
-namespace Day05Davide {
+namespace Day05 {
     class Program {
         private static void Main() {
             FileReader fileReader = new();
@@ -45,13 +47,13 @@ namespace Day05Davide {
                 ranges.Add(new MapRange(min, max - 1));
             }
 
-            // TestOverlappingRanges(ranges);
+            TestOverlappingRanges(ranges);
 
             long locationPart2 = long.MaxValue;
-
+            
             foreach (MapRange range in ranges)
             {
-                Parallel.For(0, range.Max + 1, seed => 
+                Parallel.For(0, range.Max + 1, seed =>
                 {
                     long? location = default;
                     foreach (var gardenMapper in gardenMappers)
@@ -62,24 +64,43 @@ namespace Day05Davide {
                 });
             }
             Console.WriteLine("Final New Location: " + locationPart2);
+
+            // TODO
+            // long minimalLocation = 0;
+            // bool findSolution = true;
+            // while (findSolution) {
+            //     long? seed = default;
+            //     foreach (var gardenMapper in gardenMappers.AsEnumerable().Reverse()) {
+            //         seed = gardenMapper.MapLocation(seed ?? minimalLocation);
+            //     }
+
+            //     foreach (var range in ranges) {
+            //         if (seed.HasValue && range.NumberInsideRange((long)seed)) {
+            //             Console.WriteLine("Final New Location: " + seed);
+            //             findSolution = false;
+            //             break;
+            //         }
+            //     }
+            //     minimalLocation += 1;
+            // }
         }
 
         private static void TestOverlappingRanges(List<MapRange> ranges){
             for (int i = 0; i < ranges.Count; i++)
-                {
-                    for (int j = i + 1; j < ranges.Count; j++) {
+            {
+                for (int j = i + 1; j < ranges.Count; j++) {
 
-                        Console.WriteLine(ranges[i].OverlappingInput(ranges[j]));
-                        Console.WriteLine(ranges[i].NumberInsideRange(ranges[j].Max));
-                        Console.WriteLine(ranges[i].NumberInsideRange(ranges[j].Min));
+                    Console.WriteLine(ranges[i].OverlappingInput(ranges[j]));
+                    Console.WriteLine(ranges[i].NumberInsideRange(ranges[j].Max));
+                    Console.WriteLine(ranges[i].NumberInsideRange(ranges[j].Min));
 
-                        Console.WriteLine(ranges[j].OverlappingInput(ranges[i]));
-                        Console.WriteLine(ranges[j].NumberInsideRange(ranges[i].Max));
-                        Console.WriteLine(ranges[j].NumberInsideRange(ranges[i].Min));
-                        Console.WriteLine();
-                    }
+                    Console.WriteLine(ranges[j].OverlappingInput(ranges[i]));
+                    Console.WriteLine(ranges[j].NumberInsideRange(ranges[i].Max));
+                    Console.WriteLine(ranges[j].NumberInsideRange(ranges[i].Min));
+                    Console.WriteLine();
                 }
-                // my ranges aren't overlapping so no performance gain
+            }
+            // my ranges aren't overlapping so no performance gain
         }
     }
 

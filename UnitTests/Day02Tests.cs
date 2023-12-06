@@ -1,8 +1,8 @@
-using Day02Davide;
+using Day02;
 
-namespace DavideUnitTests;
+namespace UnitTests;
 
-public class Day02Davide
+public class Day02Test
 {
     [Test]
     public void PuzzleGameReadId()

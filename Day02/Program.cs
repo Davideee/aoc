@@ -1,6 +1,6 @@
 ﻿using AocShared;
 
-namespace Day02Davide
+namespace Day02
 {
     class Program
     {

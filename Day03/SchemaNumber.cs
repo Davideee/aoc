@@ -1,6 +1,6 @@
 using System.Security.Cryptography.X509Certificates;
 
-namespace Day03Davide{
+namespace Day03{
     public class SchemaNumber{
         public readonly int Row;
 

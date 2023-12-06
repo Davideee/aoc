@@ -1,4 +1,4 @@
-namespace Day03Davide{
+namespace Day03{
     public class Gear{
         public readonly int Row;
 
