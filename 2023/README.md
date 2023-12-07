@@ -45,7 +45,6 @@ Um den gesamten Inhalt des `data`-Ordners und seiner Unterverzeichnisse in das A
   </ItemGroup>
 
 </Project>
-.```
 
 Noch **Program.cs** von Template Projekt kopieren und los :)
 
