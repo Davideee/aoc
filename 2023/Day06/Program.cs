@@ -70,8 +70,8 @@
         ///  2: -t^2 + T*t - d  > 0 | a = -1, b = T, c = -1 * d
         ///  4: ax^2 + b*x + c > 0
         ///  i1 =(-t + sqrt(t^2 - 4 * d)) / 2
-        ///  i1 =(-t - sqrt(t^2 - 4 * d)) / 2
-        ///  i1 - i2 - 2
+        ///  i2 =(-t - sqrt(t^2 - 4 * d)) / 2
+        ///  i2 - i1 = delta
         /// </remarks>
         /// <returns></returns>
         private static double MidnightFormula(long a, long b, long c, bool higher) {
