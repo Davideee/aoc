@@ -63,4 +63,29 @@ public class FileReader
         }
         return null;
     }
+
+    public string[] VerticalLines()
+    {
+        string[] verticalLines = new string[Lines[0].Length];
+        for (int i = 0; i < verticalLines.Length; i++)
+        {
+            foreach (var line in Lines)
+            {
+                verticalLines[i] += line[i];
+            }
+
+        }
+        return verticalLines;
+    }
+    public List<List<char>> CharLists()
+    {
+        List<List<char>> charLists = new();
+
+        foreach (var line in Lines)
+        {
+            charLists.Add(line.ToList());
+        }
+
+        return charLists;
+    }
 }
