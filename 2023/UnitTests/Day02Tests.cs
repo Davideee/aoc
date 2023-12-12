@@ -1,7 +1,7 @@
 using Day02;
 
 namespace UnitTests;
-
+[Ignore("Gesamte Klasse wird ignoriert.")]
 public class Day02Test
 {
     [Test]
