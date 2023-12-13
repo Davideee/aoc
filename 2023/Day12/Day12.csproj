@@ -18,4 +18,8 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Runtime.Caching" Version="8.0.0" />
+    </ItemGroup>
 </Project>

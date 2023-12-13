@@ -8,6 +8,7 @@ namespace Day12
         static void Main()
         {
             Part1();
+            Part2();
         }
 
         private static void Part1()
@@ -15,22 +16,41 @@ namespace Day12
             Stopwatch stopwatch = new();
             stopwatch.Start();
             var file = new FileReader("data.txt");
-            List<char> charList = new() { '#', '.' };
             long permutationCounts = 0;
-            Permutations permutations = new Permutations(charList);
 
-            Parallel.ForEach(file.Lines, line =>
-            {
+            foreach (var line in file.Lines) {
                 string[] input = line.Trim().Split(" ").ToArray();
                 string springDataRaw = input[0];
-                int[] sequence = input[1].Trim().Split(",").Select(int.Parse).ToArray();
-                SpringData springData = new SpringData(springDataRaw, sequence, permutations);
-                Interlocked.Add(ref permutationCounts, springData.PermutationCounts);
-            });
+                List<int> sequence = input[1].Trim().Split(",").Select(int.Parse).ToList();
+                SpringData springData = new(springDataRaw, sequence);
+                permutationCounts += springData.Counts;
+            }
 
             stopwatch.Stop();
             Console.WriteLine($"Part {1}: {permutationCounts}");
-            Console.WriteLine($"{stopwatch.ElapsedMilliseconds / 1000}s");
+            Console.WriteLine($"{stopwatch.ElapsedMilliseconds}ms");
+        }
+
+        private static void Part2()
+        {
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
+            var file = new FileReader("data.txt");
+            long permutationCounts = 0;
+
+            foreach (var line in file.Lines) {
+                string[] input = line.Trim().Split(" ").ToArray();
+                string springDataRaw = input[0];
+                string springDataRawPart2 = $"{springDataRaw}?{springDataRaw}?{springDataRaw}?{springDataRaw}?{springDataRaw}";
+                List<int> sequence = input[1].Trim().Split(",").Select(int.Parse).ToList();
+                List<int> sequencePart2 = Enumerable.Repeat(sequence, 5).SelectMany(x => x).ToList();
+                SpringData springData = new(springDataRawPart2, sequencePart2);
+
+                permutationCounts += springData.Counts;
+            }
+            stopwatch.Stop();
+            Console.WriteLine($"Part 2: {permutationCounts}");
+            Console.WriteLine($"{stopwatch.ElapsedMilliseconds}ms");
         }
     }
 }
