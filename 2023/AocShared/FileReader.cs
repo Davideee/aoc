@@ -9,12 +9,13 @@ public class FileReader
     public string[] Lines;
 
     private const string FilePath = "./data/";
+    private const string Filename = "./data.txt";
 
     private char[,] Matrix;
 
     public FileReader(string path = "")
     {
-        var readPath = string.IsNullOrEmpty(path) ? FilePath + "data.txt" : FilePath + path;
+        var readPath = string.IsNullOrEmpty(path) ? FilePath + "data.txt" : path + FilePath + Filename;
         ReadLines(readPath);
     }
 
