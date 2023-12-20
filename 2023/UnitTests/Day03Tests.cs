@@ -1,4 +1,4 @@
-using Day03;
+using Day03.Davide;
 
 namespace UnitTests;
 [Ignore("Gesamte Klasse wird ignoriert.")]

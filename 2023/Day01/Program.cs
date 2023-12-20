@@ -5,8 +5,12 @@ namespace Day01
     class Program
     {
         static void Main() {
-           // Davide.Solution.Run();
-            Reto.Solution.Run();
+            if (File.Exists(FileReader.RetoPath)){
+                Reto.Solution.Run();
+            }
+            if (File.Exists(FileReader.DavidePath)){
+                Davide.Solution.Run();
+            } 
         }
 
     }

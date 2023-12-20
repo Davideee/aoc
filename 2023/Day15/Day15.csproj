@@ -6,18 +6,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-      <ItemGroup>
-      <ProjectReference Include="..\AocShared\AocShared.csproj" />
-    </ItemGroup>
-    <ItemGroup>
-      <None Update="data\data.txt">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="data\sample.txt">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
+  <ItemGroup>
+    <None Update="Reto\\data\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Davide\\data\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AocShared\AocShared.csproj" />
+  </ItemGroup>
     <ItemGroup>
       <PackageReference Include="System.Runtime.Caching" Version="8.0.0" />
     </ItemGroup>

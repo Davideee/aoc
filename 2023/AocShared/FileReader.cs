@@ -5,17 +5,17 @@
 /// </summary>
 public class FileReader
 {
+    public const string RetoPath = "./Reto/" + FilePath;
+    public const string DavidePath = "./Davide/" + FilePath;
 
     public string[] Lines;
 
-    private const string FilePath = "./data/";
-    private const string Filename = "./data.txt";
-
+    private const string FilePath = "./data/data.txt";
     private char[,] Matrix;
 
     public FileReader(string path = "")
     {
-        var readPath = string.IsNullOrEmpty(path) ? FilePath + "data.txt" : path + FilePath + Filename;
+        var readPath = path;
         ReadLines(readPath);
     }
 

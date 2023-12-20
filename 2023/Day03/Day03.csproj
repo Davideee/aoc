@@ -7,11 +7,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <None Update="data\**\*.*">
+    <None Update="Reto\\data\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  
+  <ItemGroup>
+    <None Update="Davide\\data\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AocShared\AocShared.csproj" />
   </ItemGroup>
