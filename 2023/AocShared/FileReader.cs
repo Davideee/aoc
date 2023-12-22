@@ -13,10 +13,12 @@ public class FileReader
     private const string FilePath = "./data/data.txt";
     private char[,] Matrix;
 
+
     public FileReader(string path = "")
     {
-        var readPath = path;
-        ReadLines(readPath);
+        if (!string.IsNullOrEmpty(path)){
+            ReadLines(path);
+        }
     }
 
     private void ReadLines(string path)
@@ -36,6 +38,13 @@ public class FileReader
         }
     }
 
+    public void PrintLines(){
+        foreach (var item in Lines)
+        {
+            Console.WriteLine(item);
+        }
+    }
+
     public char[,] GetMatrix()
     {
         Matrix = new char[Lines.Length, Lines[0].Length];
@@ -48,6 +57,18 @@ public class FileReader
             }
         }
         return Matrix;
+    }
+
+    public Dictionary<(int x,int y),char> GetMap(){
+        var dict = new Dictionary<(int,int),char>();
+        for (int i = 0; i < Lines.Length; i++)
+        {
+            for (int j = 0; j < Lines[i].Length; j++)
+            {
+                dict.Add((i, j), Lines[i][j]);
+            }
+        }
+        return dict;
     }
 
     public Tuple<int, int>? GetKoordinates(char c)

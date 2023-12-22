@@ -16,11 +16,11 @@ Dann VSCode so aufsetzen mit Extensions:
 
 Am besten für jeden Tag ein neues Projekt erstellen:
 
-`dotnet new console -o Day15`
+`dotnet new console -o Day21`
 
 Dann Projekt zu Solution hinzufügen:
 
-`dotnet sln add Day15\Day15.csproj`
+`dotnet sln add Day21\Day21.csproj`
 
 Und noch den Datenordner mit Textfile erstellen: 
 
